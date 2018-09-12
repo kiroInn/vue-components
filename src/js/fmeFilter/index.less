@@ -4,9 +4,11 @@
   width: 439px;
   height: 280px;
   background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 35, 90, 0.12), 0 2px 4px 0 rgba(0, 35, 90, 0.06), 0 0 2px 0 rgba(0, 0, 0, 0.02);
   .fme-filter-tabs {
     padding: 0px 24px;
     li {
+      user-select: none;
       display: inline-block;
       padding: 11px 0px;
       margin-right: 16px;
@@ -29,6 +31,7 @@
     ul .item {
       position: relative;
       cursor: pointer;
+      user-select: none;
       padding: 6px 16px;
       font-size: 14px;
       font-stretch: normal;
@@ -36,23 +39,22 @@
       &:hover {
         background-color: #eff6ff;
       }
-
       .select {
         position: absolute;
         right: 22px;
         top: 1px;
         height: 24px;
         width: 24px;
-        &.checked-all {
-          background-image: url(assets/item-checked-all.svg);
+        &.icon-checked-all {
+          background-image: url(assets/icon-checked-all.svg);
           background-size: 24px 24px;
         }
-        &.checked {
-          background-image: url(./assets/item-checked.svg);
+        &.icon-checked {
+          background-image: url(assets/icon-checked.svg);
           background-size: 24px 24px;
         }
-        &.unchecked{
-          background-image: url(./assets/item-unchecked.svg);
+        &.icon-unchecked {
+          background-image: url(assets/icon-unchecked.svg);
           background-size: 24px 24px;
         }
       }
@@ -63,6 +65,7 @@
     padding: 7px 24px;
     .button {
       cursor: pointer;
+      user-select: none;
       display: inline-block;
       border: 1px solid @border-components;
       border-radius: 2px;
@@ -74,7 +77,19 @@
       text-align: center;
     }
     .reset {
-      margin-right: 132px;
+      position: relative;
+      padding-left: 32px;
+      margin-right: 114px;
+      i {
+        position: absolute;
+        left: 8px;
+        top: 2px;
+        display: inline-block;
+        height: 24px;
+        width: 24px;
+        background-image: url(./assets/icon-reset.svg);
+        background-size: 24px 24px;
+      }
     }
     .cancel {
       margin-right: 17px;
