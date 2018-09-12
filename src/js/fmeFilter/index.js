@@ -28,7 +28,20 @@ Vue.component('fme-filter', {
       value: [
         {value: 'GuFMoffice', checked: true},
         {value: 'GuFMoffice1', checked: true},
+        {value: 'GuFMoffice2', checked: true},
+        {value: 'GuFMoffice', checked: true},
+        {value: 'GuFMoffice1', checked: true},
+        {value: 'GuFMoffice2', checked: true},
+        {value: 'GuFMoffice', checked: true},
+        {value: 'GuFMoffice1', checked: true},
+        {value: 'GuFMoffice2', checked: true},
+        {value: 'GuFMoffice', checked: true},
+        {value: 'GuFMoffice1', checked: true},
+        {value: 'GuFMoffice2', checked: true},
+        {value: 'GuFMoffice', checked: true},
+        {value: 'GuFMoffice1', checked: true},
         {value: 'GuFMoffice2', checked: true}
+
       ],
       checkAll: true,
       active: true
