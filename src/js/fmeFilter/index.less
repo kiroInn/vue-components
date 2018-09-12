@@ -1,3 +1,5 @@
+@import '../../css/variable';
+
 .fme-filter-container {
   width: 439px;
   height: 280px;
@@ -8,38 +10,78 @@
       display: inline-block;
       padding: 11px 0px;
       margin-right: 16px;
-      color: #636669;
+      color: @text-secondary;
+      font-size: 14px;
+      cursor: pointer;
     }
     li.active {
-      color: #2979ff;
-      border-bottom: 2px solid #2979ff;
+      color: @text-blue;
+      border-bottom: 2px solid @text-blue;
     }
   }
   .fme-filter-items {
     min-height: 190px;
+    display: none;
+    padding: 8px;
+    &.active {
+      display: block;
+    }
+    ul .item {
+      position: relative;
+      cursor: pointer;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-stretch: normal;
+      color: @text-main;
+      &:hover {
+        background-color: #eff6ff;
+      }
+
+      .select {
+        position: absolute;
+        right: 22px;
+        top: 1px;
+        height: 24px;
+        width: 24px;
+        &.checked-all {
+          background-image: url(assets/item-checked-all.svg);
+          background-size: 24px 24px;
+        }
+        &.checked {
+          background-image: url(./assets/item-checked.svg);
+          background-size: 24px 24px;
+        }
+        &.unchecked{
+          background-image: url(./assets/item-unchecked.svg);
+          background-size: 24px 24px;
+        }
+      }
+    }
   }
   .fme-filter-operation {
-    border-top: 1px solid #eff2f8;
+    border-top: 1px solid @split-line;
     padding: 7px 24px;
     .button {
+      cursor: pointer;
       display: inline-block;
-      border: 1px solid #d8dde8;
+      border: 1px solid @border-components;
       border-radius: 2px;
       padding: 6px 12px;
       min-width: 80px;
-      color: #636669;
+      color: @text-secondary;
       font-size: 14px;
       line-height: 18px;
       text-align: center;
     }
     .reset {
-      margin-right: 138px;
+      margin-right: 132px;
     }
     .cancel {
       margin-right: 17px;
     }
     .confirm {
-      background-color: #2c86ff;
+      border: 1px solid @primary;
+      background-color: @primary;
       color: #fff;
     }
   }
