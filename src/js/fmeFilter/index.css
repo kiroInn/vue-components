@@ -96,7 +96,7 @@
 .fme-filter-container .fme-filter-operation .cancel {
   margin-right: 17px;
 }
-.fme-filter-container .fme-filter-operation .confirm {
+.fme-filter-container .fme-filter-operation .submit {
   border: 1px solid #2c86ff;
   background-color: #2c86ff;
   color: #fff;

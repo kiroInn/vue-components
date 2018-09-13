@@ -19,7 +19,7 @@ Vue.component('fme-filter', {
   <div class="fme-filter-operation">
     <div class="button reset" v-on:click="reset"><i class="icon-reset"></i>重置</div>
     <div class="button cancel">取消</div>
-    <div class="button confirm" v-on:click="confirm">确认筛选</div>
+    <div class="button submit" v-on:click="submit">确认筛选</div>
   </div>
   </div>`,
   mounted: function () {
@@ -113,7 +113,7 @@ Vue.component('fme-filter', {
         })
       })
     },
-    confirm: function () {
+    submit: function () {
       console.log('//TODO implements filter data')
     }
   }
