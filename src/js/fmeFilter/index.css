@@ -42,22 +42,22 @@
 .fme-filter-container .fme-filter-items ul .item:hover {
   background-color: #eff6ff;
 }
-.fme-filter-container .fme-filter-items ul .item .select {
+.fme-filter-container .fme-filter-items ul .item .fme-filter-select {
   position: absolute;
   right: 22px;
   top: 1px;
   height: 24px;
   width: 24px;
 }
-.fme-filter-container .fme-filter-items ul .item .select.icon-checked-all {
+.fme-filter-container .fme-filter-items ul .item .fme-filter-select.icon-checked-all {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMyQzg2RkYiIGQ9Ik01IDRoMTRhMSAxIDAgMCAxIDEgMXYxNGExIDEgMCAwIDEtMSAxSDVhMSAxIDAgMCAxLTEtMVY1YTEgMSAwIDAgMSAxLTF6bTIgN3YyaDEwdi0ySDd6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=');
   background-size: 24px 24px;
 }
-.fme-filter-container .fme-filter-items ul .item .select.icon-checked {
+.fme-filter-container .fme-filter-items ul .item .fme-filter-select.icon-checked {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMyQzg2RkYiIGQ9Ik01IDRoMTRhMSAxIDAgMCAxIDEgMXYxNGExIDEgMCAwIDEtMSAxSDVhMSAxIDAgMCAxLTEtMVY1YTEgMSAwIDAgMSAxLTF6bTYuMDAzIDEybDcuMDctNy4wNzEtMS40MTQtMS40MTQtNS42NTYgNS42NTctMi44MjktMi44MjktMS40MTQgMS40MTRMMTEuMDAzIDE2eiIvPgogICAgPC9nPgo8L3N2Zz4K');
   background-size: 24px 24px;
 }
-.fme-filter-container .fme-filter-items ul .item .select.icon-unchecked {
+.fme-filter-container .fme-filter-items ul .item .fme-filter-select.icon-unchecked {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNCRkM2RDQiIGQ9Ik01IDRoMTRhMSAxIDAgMCAxIDEgMXYxNGExIDEgMCAwIDEtMSAxSDVhMSAxIDAgMCAxLTEtMVY1YTEgMSAwIDAgMSAxLTF6bTEgMnYxMmgxMlY2SDZ6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=');
   background-size: 24px 24px;
 }

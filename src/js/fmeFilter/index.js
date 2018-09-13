@@ -9,10 +9,10 @@ Vue.component('fme-filter', {
   <div v-for="(tab, index) in tabValues" :class="[\'fme-filter-items\', {active: tab.active}]">
     <ul>
       <li class="item" v-on:click="checkAll(tab)">
-        <span>全部</span><span :class="[\'select\', {\'icon-checked-all\': tab.checkAll, \'icon-unchecked\': !tab.checkAll}]"></span>
+        <span>全部</span><span :class="[\'fme-filter-select\', {\'icon-checked-all\': tab.checkAll, \'icon-unchecked\': !tab.checkAll}]"></span>
       </li>
       <li class="item" v-for="item in tab.value" v-on:click="checkItem(item)">
-        <span>{{item.value}}</span><span :class="[\'select\', {\'icon-checked\': item.checked, \'icon-unchecked\': !item.checked}]"></span>
+        <span>{{item.value}}</span><span :class="[\'fme-filter-select\', {\'icon-checked\': item.checked, \'icon-unchecked\': !item.checked}]"></span>
       </li>
     </ul>
   </div>
