@@ -81,7 +81,14 @@ Vue.component('fme-filter', {
       })
     },
     submit: function () {
-      console.log('//TODO implements filter data')
+      let result = {}
+      this.tabValues.forEach(tab => {
+        result[tab.key] = []
+        tab.value.forEach(item => {
+          if (item.checked) result[tab.key].push(item.value)
+        })
+      })
+      return result
     }
   }
 })
