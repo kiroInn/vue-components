@@ -1,18 +1,24 @@
 import Vue from 'vue'
 import './index.css'
 
+const CHECK_STATUS = {
+  CHECKED: 'checked',
+  UNCHECKED: 'unchecked',
+  EDIT: 'edit'
+}
+
 Vue.component('fme-filter', {
   template: `<div class="fme-filter-container">
   <ul class="fme-filter-tabs">
     <li v-for="tab in tabValues" :class="{active: tab.active}" v-on:click="changeTab(tab)">{{tab.name}}</li>
   </ul>
-  <div v-for="(tab, index) in tabValues" :class="[\'fme-filter-items\', {active: tab.active}]">
+  <div v-for="(tab, index) in tabValues" :class="['fme-filter-items', {active: tab.active}]">
     <ul>
       <li class="item" v-on:click="checkAll(tab)">
-        <span>全部</span><span :class="[\'fme-filter-select\', {\'icon-checked-all\': tab.checkAll, \'icon-unchecked\': !tab.checkAll}]"></span>
+        <span>全部</span><span :class="['fme-filter-select', tab.status]"></span>
       </li>
-      <li class="item" v-for="item in tab.value" v-on:click="checkItem(item)">
-        <span>{{item.value}}</span><span :class="[\'fme-filter-select\', {\'icon-checked\': item.checked, \'icon-unchecked\': !item.checked}]"></span>
+      <li class="item" v-for="item in tab.value" v-on:click="checkItem(tab, item)">
+        <span>{{item.name}}</span><span :class="['fme-filter-select', {'checked': item.checked, 'unchecked': !item.checked}]"></span>
       </li>
     </ul>
   </div>
@@ -22,66 +28,9 @@ Vue.component('fme-filter', {
     <div class="button submit" v-on:click="submit">确认筛选</div>
   </div>
   </div>`,
+  props: ['data'],
   mounted: function () {
-    this.tabValues = [{
-      name: '维护团队',
-      value: [
-        {value: 'GuFMoffice', checked: true},
-        {value: 'GuFMoffice1', checked: true},
-        {value: 'GuFMoffice2', checked: true},
-        {value: 'GuFMoffice', checked: true},
-        {value: 'GuFMoffice1', checked: true},
-        {value: 'GuFMoffice2', checked: true},
-        {value: 'GuFMoffice', checked: true},
-        {value: 'GuFMoffice1', checked: true},
-        {value: 'GuFMoffice2', checked: true},
-        {value: 'GuFMoffice', checked: true},
-        {value: 'GuFMoffice1', checked: true},
-        {value: 'GuFMoffice2', checked: true},
-        {value: 'GuFMoffice', checked: true},
-        {value: 'GuFMoffice1', checked: true},
-        {value: 'GuFMoffice2', checked: true}
-
-      ],
-      checkAll: true,
-      active: true
-    }, {
-      name: '技能',
-      value: [
-        {value: 'GuFMoffice3', checked: true},
-        {value: 'GuFMoffice4', checked: true},
-        {value: 'GuFMoffice5', checked: true}
-      ],
-      checkAll: true,
-      active: false
-    }, {
-      name: 'FME状态',
-      value: [
-        {value: 'GuFMoffic6', checked: true},
-        {value: 'GuFMoffice7', checked: true},
-        {value: 'GuFMoffice8', checked: true}
-      ],
-      checkAll: true,
-      active: false
-    }, {
-      name: '办公室',
-      value: [
-        {value: 'GuFMoffice', checked: true},
-        {value: 'GuFMoffice1', checked: true},
-        {value: 'GuFMoffice2', checked: true}
-      ],
-      checkAll: true,
-      active: false
-    }, {
-      name: '承包商',
-      value: [
-        {value: 'GuFMoffice', checked: true},
-        {value: 'GuFMoffice1', checked: true},
-        {value: 'GuFMoffice2', checked: true}
-      ],
-      checkAll: true,
-      active: false
-    }]
+    this.init()
   },
   data: function () {
     return {
@@ -89,28 +38,46 @@ Vue.component('fme-filter', {
     }
   },
   methods: {
+    init: function () {
+      this.tabValues = this.data.map((item, index) => ({
+        key: item.key,
+        name: item.name,
+        status: 'checked',
+        active: index === 0,
+        value: item.value.map(v => ({...v, checked: true}))
+      }))
+    },
     changeTab: function (tab) {
       this.tabValues.forEach(item => {
         item.active = false
       })
       tab.active = true
     },
-    checkItem: function (item) {
+    checkItem: function (tab, item) {
       item.checked = !item.checked
+      tab.status = this.getCheckAllStatus(tab.value)
     },
     checkAll: function (tab) {
-      let checkAll = !tab.checkAll
+      let checkAll = tab.status === CHECK_STATUS.UNCHECKED
       tab.value.forEach(item => {
         item.checked = checkAll
       })
-      tab.checkAll = checkAll
+      tab.status = this.getCheckAllStatus(tab.value)
+    },
+    getCheckAllStatus: function (checkItems) {
+      let checkedNum = 0
+      checkItems.forEach(item => {
+        checkedNum += item.checked ? 1 : 0
+      })
+      return checkedNum === 0 ? CHECK_STATUS.UNCHECKED : checkedNum < checkItems.length ? CHECK_STATUS.EDIT : CHECK_STATUS.CHECKED
     },
     reset: function () {
       this.tabValues.forEach(tab => {
-        tab.checkAll = true
+        tab.status = true
         tab.value.forEach(item => {
           item.checked = true
         })
+        tab.status = this.getCheckAllStatus(tab.value)
       })
     },
     submit: function () {
