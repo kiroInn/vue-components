@@ -7,22 +7,22 @@ const CHECK_STATUS = {
   EDIT: 'edit'
 }
 
-Vue.component('fme-filter', {
-  template: `<div class="fme-filter-container">
-  <ul class="fme-filter-tabs">
+Vue.component('filter', {
+  template: `<div class="filter-container">
+  <ul class="filter-tabs">
     <li v-for="tab in tabValues" :class="{active: tab.active}" v-on:click="changeTab(tab)">{{tab.name}}</li>
   </ul>
-  <div v-for="(tab, index) in tabValues" :class="['fme-filter-items', {active: tab.active}]">
+  <div v-for="(tab, index) in tabValues" :class="['filter-items', {active: tab.active}]">
     <ul>
       <li class="item" v-on:click="checkAll(tab)">
-        <span>全部</span><span :class="['fme-filter-select', tab.status]"></span>
+        <span>全部</span><span :class="['filter-select', tab.status]"></span>
       </li>
       <li class="item" v-for="item in tab.value" v-on:click="checkItem(tab, item)">
-        <span>{{item.name}}</span><span :class="['fme-filter-select', {'checked': item.checked, 'unchecked': !item.checked}]"></span>
+        <span>{{item.name}}</span><span :class="['filter-select', {'checked': item.checked, 'unchecked': !item.checked}]"></span>
       </li>
     </ul>
   </div>
-  <div class="fme-filter-operation">
+  <div class="filter-operation">
     <div class="button reset" v-on:click="reset"><i class="icon-reset"></i>重置</div>
     <div class="button cancel">取消</div>
     <div class="button submit" v-on:click="submit">确认筛选</div>
