@@ -3,49 +3,53 @@
     <div class="table-header">
       <table ref="tableHeader">
         <thead>
-        <tr>
-          <th>&nbsp;</th>
-          <th colspan="4">Wireless Network</th>
-          <th colspan="4">Core Network - CS</th>
-          <th colspan="4">Core Network - PS</th>
-          <th colspan="4">Transmission Network</th>
-          <th colspan="4">Data Communication</th>
-          <th colspan="4">Software(VAS)</th>
-        </tr>
-        <tr>
-          <th>Vendor</th>
-          <th>NE Quantity</th>
-          <th>Alarm Probe</th>
-          <th>MCP Probe</th>
-          <th>PM Probe</th>
-          <th>NE Quantity</th>
-          <th>Alarm Probe</th>
-          <th>MCP Probe</th>
-          <th>PM Probe</th>
-          <th>NE Quantity</th>
-          <th>Alarm Probe</th>
-          <th>MCP Probe</th>
-          <th>PM Probe</th>
-          <th>NE Quantity</th>
-          <th>Alarm Probe</th>
-          <th>MCP Probe</th>
-          <th>PM Probe</th>
-          <th>NE Quantity</th>
-          <th>Alarm Probe</th>
-          <th>MCP Probe</th>
-          <th>PM Probe</th>
-          <th>NE Quantity</th>
-          <th>Alarm Probe</th>
-          <th>MCP Probe</th>
-          <th>PM Probe</th>
-        </tr>
+          <tr>
+            <th >&nbsp;</th>
+            <th colspan="4">Wireless Network</th>
+            <th colspan="4">Core Network - CS</th>
+            <th colspan="4">Core Network - PS</th>
+            <th colspan="4">Transmission Network</th>
+            <th colspan="4">Data Communication</th>
+            <th colspan="4">Software(VAS)</th>
+          </tr>
+          <tr>
+            <th>Vendor</th>
+            <th>NE Quantity</th>
+            <th>Alarm Probe</th>
+            <th>MCP Probe</th>
+            <th>PM Probe</th>
+            <th>NE Quantity</th>
+            <th>Alarm Probe</th>
+            <th>MCP Probe</th>
+            <th>PM Probe</th>
+            <th>NE Quantity</th>
+            <th>Alarm Probe</th>
+            <th>MCP Probe</th>
+            <th>PM Probe</th>
+            <th>NE Quantity</th>
+            <th>Alarm Probe</th>
+            <th>MCP Probe</th>
+            <th>PM Probe</th>
+            <th>NE Quantity</th>
+            <th>Alarm Probe</th>
+            <th>MCP Probe</th>
+            <th>PM Probe</th>
+            <th>NE Quantity</th>
+            <th>Alarm Probe</th>
+            <th>MCP Probe</th>
+            <th>PM Probe</th>
+          </tr>
         </thead>
       </table>
     </div>
     <div class="table-body" @scroll="handleScroll">
       <table>
+        <colgroup>
+          <col class="field-main"/>
+          <col span="24" class="field-value"/>
+        </colgroup>
         <tbody>
-        <tr v-for="(item, index) in items"
+        <tr v-for="(item, index) in data"
             :key="index">
           <td>JUNIPER</td>
           <td>1</td>
@@ -82,7 +86,7 @@
           <tr>
             <td></td>
           </tr>
-          <tr v-for="(item, index) in items"
+          <tr v-for="(item, index) in data"
               :key="index">
             <td>JUNIPER</td>
           </tr>
@@ -114,11 +118,6 @@
         }
       },
     },
-    data () {
-      return {
-        items: [12, 3, 4, 45, 5, 5, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,]
-      }
-    },
     methods: {
       handleScroll (e) {
         this.$refs.tableFixLeft.style.top = `-${e.target.scrollTop}px`;
@@ -129,7 +128,7 @@
 </script>
 <style lang="less" scoped>
   @table-width: 1246px;
-  @table-height: 500px;
+  @table-height: 300px;
   .fix-column-table {
     position: relative;
 
@@ -139,7 +138,6 @@
       font-size: 14px;
       thead {
         tr {
-          height: 50px;
           th {
             font-size: 14px;
             color: #636669;
@@ -149,6 +147,9 @@
       }
       tr {
         height: 40px;
+        td:first-of-type,th:first-of-type{
+          min-width: 165px;
+        }
         td, th {
           border: 1px solid #e6eaf2;
           text-align: center;
@@ -175,7 +176,7 @@
     }
 
     .table-body {
-      height: @table-height;
+      max-height: @table-height;
       width: @table-width;
       overflow-x: auto;
       overflow-y: auto;
@@ -185,11 +186,11 @@
     }
 
     .table-fix-left {
-      height: @table-height + 80px;
+      max-height: @table-height + 80px;
       overflow: hidden;
       position: absolute;
       left: 0;
-      top: 20px;
+      top: 0;
       background-color: #fff;
       table {
         position: relative;
